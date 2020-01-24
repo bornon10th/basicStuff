@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Button assignment!</title>
+    <style>
+        body {
+            background-color: #fff;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 48px;
+            background: -webkit-linear-gradient(#eee, #333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        button {
+            width: 200px;
+            height: 34px;
+            border-radius: 10px;
+            border: 0px solid #000;
+            color: #fff;
+            font-size: 18px;
+            background-color: rgb(153,0,0);
+        }
+        button:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Click on any button</h1>
+        <div id="btns"></div>
+    </div>
+    <script>
+        console.log("DOM loaded!");
+        // grabbing button Div
+        let btnDiv = document.getElementById("btns");
+        let btnArray = [
+            {
+                name: 'button1'
+            },
+            {
+                name: 'button2'
+            },
+            {
+                name: 'button3'
+            },
+            {
+                name: 'button4'
+            },
+            {
+                name: 'button5'
+            }
+        ];
+
+        let idCount = 100;
+        for(let i =0 ; i < btnArray.length; i++) {
+            // adding ids
+            btnArray[i].id = idCount++;
+            let ele = document.createElement('p'); // is a node
+            ele.innerHTML = `<button name=${btnArray[i].name} id=${btnArray[i].id}>${btnArray[i].name}</button>`;
+            // adding buttons to div
+            btnDiv.appendChild(ele);
+            // adding event listeners
+            document.getElementById(btnArray[i].id).addEventListener("click", function() {
+                alert(`button name ${this.name}`)
+                setTimeout(() => {
+                    alert(`button id ${this.id}`)
+                }, 1000)
+            });
+        }
+    </script>
+</body>
+</html>
